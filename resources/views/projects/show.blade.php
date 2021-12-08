@@ -5,7 +5,7 @@
 
 <body>
     <article>
-        <a href="/">
+        <a href="/projects">
             Back To Projects
         </a>
         <h1>{{$project->title}}</h1>
@@ -19,7 +19,7 @@
         <a href="/projects/{{$project->id}}/edit">Edit Project</a>
         <br/>
         <h2>Tasks</h2>
-        <form method="POST" action="/addtask">
+        <form method="POST" action="/tasks">
             @csrf
             <input type="text" placeholder="Task Description" name="description">
             <input type="hidden" value="{{$project->id}}" name="project_id">
@@ -29,10 +29,12 @@
             @foreach ($project->tasks as $task)
                 <li>
                     {{$task->description;}}
-                    <a href="/taskedit/{{$task->id}}">Edit Task</a>
-                    <form action="/deletetask/{{$task->id}}">
+                    <a href="/tasks/{{$task->id}}/edit">Edit Task</a>
+                    <form method="POST" action="/tasks/{{$task->id}}">
+                        @csrf
+                        @method('DELETE')
                         <input type="hidden" value="{{$project->id}}" name="project_id">
-                        <button>Delete</button>
+                        <button>Delete Task</button>
                     </form>
                 </li>
             @endforeach

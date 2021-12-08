@@ -9,40 +9,40 @@ use App\Models\Task;
 
 class ProjectController extends Controller
 {
+    public function index() {
+        return view('projects.index', [
+            'projects' => Project::all()
+        ]);
+    }
     public function show(Project $project)
     {
-        return view('project', [
-            'tasks' => $project->tasks,
-            'project' => $project,
+        $project->load('tasks');
+        return view('projects.show', [
+            'project' => $project
         ]);
     }
-    public function addProject(Request $req)
-    {
-        $project = new Project;
-        $project->title=$req->title;
-        $project->description=$req->description;
-        $project->save();
-        return redirect('/');
+    public function create(){
+        return view('projects.create');
     }
-    public function delete(Project $project)
+    public function store(Request $request)
     {
-  
+        Project::create($request->all());
+        return redirect('/projects');
+    }
+    public function destroy(Project $project)
+    {
         $project->delete();
-        
-        return redirect('/');
+        return redirect('/projects');
     }
-    public function showEdit(Project $project)
+    public function edit(Project $project)
     {
-        return view('editproject', [
+        return view('projects.edit', [
             'project' => $project,
         ]);
     }
-    public function edit(Request $req)
+    public function update(Request $request, Project $project)
     {
-        $data=Project::find($req->id);
-        $data->title=$req->title;
-        $data->description=$req->description;
-        $data->save();
-        return redirect('/project/'.$req->id);
+        $project->update($request->all());
+        return redirect('/projects/' . $project->id);
     }
 }

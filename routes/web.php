@@ -40,26 +40,27 @@ use App\Http\Controllers\TaskController;
 // Route::get('/deletetask/{task}', [TaskController::class, 'delete']);
 
 
-// index page
-Route::get('projects', [Project2Controller::class, 'index']);
+// // index page
+// Route::get('/projects', [ProjectController::class, 'index']);
 
-// create page
-Route::get('projects/create', [Project2Controller::class, 'create']);
+// // create page
+// Route::get('projects/create', [ProjectController::class, 'create']);
 
-// store post
-Route::post('projects', [Project2Controller::class, 'store']);
+// // store post
+// Route::post('projects', [ProjectController::class, 'store']);
 
-// show page
-Route::get('projects/{project}', [Project2Controller::class, 'show']);
+// // show page
+// Route::get('projects/{project}', [ProjectController::class, 'show']);
 
-// edit page
-Route::get('projects/{project}/edit', [Project2Controller::class, 'edit']);
+// // edit page
+// Route::get('projects/{project}/edit', [ProjectController::class, 'edit']);
 
-// update put
-Route::patch('projects/{project}', [Project2Controller::class, 'update']);
+// // update put
+// Route::patch('projects/{project}', [ProjectController::class, 'update']);
 
-// destroy
-Route::delete('/projects/{project}', [Project2Controller::class, 'destroy']);
+// // destroy
+// Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
 
 
-Route::resource('projects', Project2Controller::class);
+Route::resource('projects', ProjectController::class);
+Route::resource('tasks', TaskController::class);

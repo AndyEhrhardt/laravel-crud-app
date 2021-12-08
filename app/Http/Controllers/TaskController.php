@@ -9,30 +9,35 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
-    public function addTask(Request $req)
-    {
-        $task = new Task;
-        $task->description=$req->description;
-        $task->project_id=$req->project_id;
-        $task->save();
-        return redirect('/project/'.$req->project_id);
+    public function index() {
+        //
     }
-    public function showTaskEdit(Task $task)
+    public function show()
     {
-        return view('taskedit', [
+        //
+    }
+    public function create(){
+        //
+    }
+    public function store(Request $request)
+    {
+        Task::create($request->all());
+        return redirect('/projects/' . $request->project_id);
+    }
+    public function destroy(Task $task)
+    {
+        $task->delete();
+        return redirect('/projects/' . $task->project_id);
+    }
+    public function edit(Task $task)
+    {
+        return view('tasks.edit', [
             'task' => $task,
         ]);
     }
-    public function taskEdit(Request $req)
+    public function update(Request $request, Task $task)
     {
-        $data=Task::find($req->id);
-        $data->description=$req->description;
-        $data->save();
-        return redirect('/project/'.$req->project_id);
-    }
-    public function delete(Task $task)
-    {
-        Task::find($task->id)->delete();
-        return redirect('/project/'.$task->project_id);
+        $task->update($request->all());
+        return redirect('/projects/' . $task->project_id);
     }
 }
