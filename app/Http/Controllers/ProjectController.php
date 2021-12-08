@@ -27,7 +27,8 @@ class ProjectController extends Controller
     public function delete(Project $project)
     {
   
-        Project::find($project->id)->delete();
+        $project->delete();
+        
         return redirect('/');
     }
     public function showEdit(Project $project)
