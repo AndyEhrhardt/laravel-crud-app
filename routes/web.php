@@ -17,50 +17,5 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('projects', [
-//         'projects' => Project::all()
-//     ]);
-// });
-
-// Route::get('project/{project}', [ProjectController::class, 'show']);
-
-// Route::get('/addproject', function () {
-//     return view('addproject');
-// });
-
-// Route::post('/addproject', [ProjectController::class, 'addProject']);
-// Route::get('/deleteproject/{project}', [ProjectController::class, 'delete']);
-// Route::get('/editproject/{project}', [ProjectController::class, 'showEdit']);
-// Route::post('/editproject/{id}', [ProjectController::class, 'edit']);
-
-// Route::post('/addtask', [TaskController::class, 'addTask']);
-// Route::get('/taskedit/{task}', [TaskController::class, 'showTaskEdit']);
-// Route::post('/taskedit/{id}', [TaskController::class, 'taskEdit']);
-// Route::get('/deletetask/{task}', [TaskController::class, 'delete']);
-
-
-// // index page
-// Route::get('/projects', [ProjectController::class, 'index']);
-
-// // create page
-// Route::get('projects/create', [ProjectController::class, 'create']);
-
-// // store post
-// Route::post('projects', [ProjectController::class, 'store']);
-
-// // show page
-// Route::get('projects/{project}', [ProjectController::class, 'show']);
-
-// // edit page
-// Route::get('projects/{project}/edit', [ProjectController::class, 'edit']);
-
-// // update put
-// Route::patch('projects/{project}', [ProjectController::class, 'update']);
-
-// // destroy
-// Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
-
-
 Route::resource('projects', ProjectController::class);
 Route::resource('tasks', TaskController::class);
